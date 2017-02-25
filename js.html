@@ -1,0 +1,33 @@
+<html>
+<script>
+function load() {
+  var r,g,b;
+  var whenToFire = 50;
+
+  document.body.style.background ='#FFF';
+  for (r = 0; r<256; r = r + 100){
+    for (g = 0; g<256; g = g + 100){
+      for (b = 0; b<256; b = b + 100){
+        console.log(whenToFire);
+        setTimeout(function() {changeBackground(r,g,b);}, whenToFire);
+        whenToFire = whenToFire + 500;
+      }
+    }    
+  }
+}
+
+function changeBackground(red, green, blue){
+  var bg = '#' + red.toString(16) + green.toString(16) + blue.toString(16);
+  console.log("" + red + "," + green + "," + blue );
+  console.log("bg:" + bg);
+  var h = document.getElementById("colour");
+  h.innerHTML = bg;
+  document.body.style.background = bg;
+}
+
+</script>
+<body onload='load()'>
+
+<h1 id="colour">Background Color</h1>
+</body>
+</html>
