@@ -1,20 +1,23 @@
 <html>
 <script>
-function load() {
+async function load() {
   var r,g,b;
-  var whenToFire = 50;
 
   document.body.style.background ='#FFF';
-  for (r = 0; r<256; r = r + 100){
-    for (g = 0; g<256; g = g + 100){
-      for (b = 0; b<256; b = b + 100){
-        console.log(whenToFire);
-        setTimeout(function() {changeBackground(r,g,b);}, whenToFire);
-        whenToFire = whenToFire + 500;
+  for (r = 0; r<2255; r = r + 25){
+    for (g = 0; g<255; g = g + 25){
+      for (b = 0; b<255; b = b + 25){
+        await sleep(100);
+        changeBackground(r,g,b);
       }
     }    
   }
 }
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 
 function changeBackground(red, green, blue){
   var bg = '#' + red.toString(16) + green.toString(16) + blue.toString(16);
